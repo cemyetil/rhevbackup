@@ -15,6 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+CELERY_BROKER_URL = 'amqp://rhevbackup:rhevbackup@mariadb:5672/mariadb'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
@@ -37,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'jobs',
+    'django_celery_results',
     
 ]
 
@@ -129,4 +132,5 @@ STATICFILES_DIRS = [
 
 STATIC_URL = '/static/'
 
+CELERY_RESULT_BACKEND = 'django-db'
     
